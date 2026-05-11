@@ -1,0 +1,48 @@
+### --- Python --- ###
+# Thư mục chứa các thư viện đã cài đặt (Rất nặng, không đưa lên Git)
+venv/
+.venv/
+env/
+bin/
+lib/
+include/
+
+# Các file biên dịch của Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+### --- AI / Machine Learning --- ###
+# Không đẩy dữ liệu và kết quả nặng lên Git
+**/data/
+**/outputs/
+# Nếu bạn tải model về máy (như model Transformers)
+**/models/
+*.h5
+*.pth
+*.pt
+*.pkl
+
+### --- VS Code --- ###
+# File cấu hình riêng của bạn (tọa độ chuột, các file đã mở...)
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### --- Jupyter Notebook --- ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+### --- Hệ điều hành --- ###
+# Mac
+.DS_Store
+# Windows
+Thumbs.db
+desktop.ini
+
+### --- Môi trường & Bảo mật --- ###
+# File chứa key bí mật (không bao giờ được đẩy lên GitHub)
+.env
