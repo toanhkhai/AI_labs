@@ -2,8 +2,6 @@ import json
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-
-
 # Đọc file jsonl (các chunking)
 def read_chunks(path):
     chunks = []
@@ -13,8 +11,6 @@ def read_chunks(path):
     print(f"Đã đọc {len(chunks)} các đoạn từ {path}")
     return chunks
 
-
-
 # Tạo các embeddings từ các chunks
 def create_embedding(chunks,model):
     chunk_texts = []
@@ -22,8 +18,6 @@ def create_embedding(chunks,model):
         chunk_texts.append(chunk['chunk_text'])
     embeddings = model.encode(chunk_texts)
     return embeddings
-
-
 
 # Tạo các metadata cho các chunk
 def save_metadata(chunks):
@@ -35,11 +29,9 @@ def save_metadata(chunks):
         })
     return metadata
 
-
-
 if __name__ == "__main__":
 
-    model = SentenceTransformer("keepitreal/vietnamese-sbert",device=0)
+    model = SentenceTransformer("AITeamVN/Vietnamese_Embedding_v2",device=0)
 
     chunks_token = read_chunks("build_a_semantic_search_pipeline/chunks/chunks_overlap.jsonl")
     chunks_sentence = read_chunks("build_a_semantic_search_pipeline/chunks/chunks_sentences.jsonl")
@@ -53,7 +45,6 @@ if __name__ == "__main__":
     embeddings_chunkSentence = create_embedding(chunks_sentence,model)
     metadata_chunkSentence = save_metadata(chunks_sentence)
     print(f"Đã tạo ma trận embedding và metadata theo cách chunk_sentence. Kích thước embedding: {embeddings_chunkSentence.shape}")
-
 
     import chromadb
     chromadb_client = chromadb.PersistentClient("build_a_semantic_search_pipeline/vector_database/ChromaDB/")
